@@ -84,7 +84,9 @@ window.onload = function() {
     let getImageFiles = (e) => {
         const uploadFiles = [];
         const files = e.currentTarget.files;
-
+		
+		console.log(files);
+		
         if ([...files].length > 1) {
             alert('이미지는 1개만 등록가능합니다.');
             return;
@@ -102,12 +104,13 @@ window.onload = function() {
                 uploadFiles.push(file);
                 const reader = new FileReader();
                 reader.onload = (e) => {
-                    const preview = changeBgImg(e, file);
+                    changeBgImg(e, file);
                 };
                 reader.readAsDataURL(file);
             }
         });
     }
+    
     let changeBgImg = (e, file) => {
         backImg.src= e.target.result;
     }
